@@ -1,6 +1,11 @@
-module Lib
-    ( someFunc
-    ) where
+{-# LANGUAGE OverloadedStrings #-}
+module Lib ( runApi ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import Web.Scotty
+import Ping
+import Double
+
+runApi :: IO ()
+runApi = scotty 3000 $ do
+  Ping.run
+  Double.run
